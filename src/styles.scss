@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    /* Brand Colors from Design */
+    --primary-teal: #0c8397;
+    --secondary-orange: #ef6f33;
+    
+    /* Transaction Category Colors from JSON */
+    --cat-tea-lounge: #12a580;
+    --cat-texaco: #d51271;
+    --cat-amazon: #c12020;
+    --cat-7-eleven: #c89616;
+    --cat-hm: #e25a2c;
+    --cat-jerry: #1180aa;
+    
+    /* Grays */
+    --border-color: #dddddd;
+    --text-dark: #333333;
+    --text-light: #666666;
+  }
+  
+  body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    background: url('assets/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-dark);
+  }
