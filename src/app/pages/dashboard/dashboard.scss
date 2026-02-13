@@ -1,0 +1,57 @@
+.main-bank-header {
+  background-color: white;
+  border-bottom: 2px solid var(--secondary-orange);
+  padding: 10px 0;
+
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @media (max-width: 390px) {
+      padding: 0 10px;
+    }
+  }
+
+  .bank-logo {
+    height: 40px;
+
+    @media (max-width: 380px) {
+      width: 90%;
+    }
+  }
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+
+  .form {
+    background: white; // ToDo: change background
+    height: fit-content;
+  }
+
+  .list {
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    @media (max-width: 1024px) {
+      max-height: 55vh;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px;
+    padding: 0 20px;
+  }
+}

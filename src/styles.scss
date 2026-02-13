@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 :root {
     /* Brand Colors from Design */
     --primary-teal: #0c8397;
@@ -21,7 +20,8 @@
   body {
     font-family: 'Kanit', sans-serif;
     margin: 0;
-    background: url('assets/background.jpg') no-repeat center center fixed;
+    background: url('../public/assets/background.jpg') no-repeat center center fixed;
     background-size: cover;
     color: var(--text-dark);
+    overflow: hidden;
   }

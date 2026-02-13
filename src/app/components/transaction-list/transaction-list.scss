@@ -1,0 +1,116 @@
+.transaction-list-container {
+  background: #fff;
+  padding-bottom: 20px;
+
+  .list-header {
+    background-color: var(--primary-teal);
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .header-icon {
+      height: 20px;
+      mix-blend-mode: color-burn; // ToDo: rethink a better solution
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+  column-gap: 10px;
+
+  .search-input-wrapper {
+    position: relative;
+    flex: 1;
+    max-width: 300px;
+    min-width: 125px;
+    margin-bottom: 10px;
+
+    input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      padding: 8px 0;
+      outline: none;
+      font-family: inherit;
+      &::placeholder {
+        color: #aaa;
+        font-style: italic;
+      }
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #999;
+    }
+  }
+
+  .sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    .btn-group {
+      display: flex;
+      border: 1px solid #ccc;
+
+      button {
+        background: #fff;
+        border: none;
+        border-right: 1px solid #ccc;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: 500;
+        color: #666;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        &.active {
+          background-color: #f0f0f0;
+          color: var(--text-dark);
+        }
+
+        .arrow {
+          display: inline-block;
+          transition: transform 0.2s ease;
+          font-size: 0.7rem;
+          &.asc {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+}
+
+.items-list {
+  padding: 0 20px;
+}

@@ -1,0 +1,58 @@
+.transaction-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: white;
+  border: 1px solid #eee;
+  gap: 35px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background-color: var(--category-color, #ccc);
+  }
+
+  &:hover {
+    background-color: #fcfcfc;
+  }
+
+  .date-col {
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+
+  .logo-col img {
+    border-radius: 4px;
+    object-fit: contain;
+  }
+
+  .info-col {
+    .merchant-name {
+      display: block;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+    .transaction-type {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+  }
+
+  .amount-col {
+    text-align: right;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    flex: 1;
+  }
+
+  @media (max-width: 486px) {
+    gap: 5px;
+  }
+}

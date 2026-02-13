@@ -1,0 +1,13 @@
+<div class="transaction-row" [style.--category-color]="transaction().categoryCode">
+  <div class="date-col">
+    {{ transaction().transactionDate | date : 'MMM. dd' }}
+  </div>
+  <div class="logo-col">
+    <img [src]="transaction().merchantLogo" [alt]="transaction().merchant" width="40" height="40" />
+  </div>
+  <div class="info-col">
+    <span class="merchant-name">{{ transaction().merchant }}</span>
+    <span class="transaction-type">{{ transaction().transactionType }}</span>
+  </div>
+  <div class="amount-col">-{{ transaction().amount | currency }}</div>
+</div>

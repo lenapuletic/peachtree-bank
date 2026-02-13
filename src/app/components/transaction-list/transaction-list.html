@@ -1,0 +1,58 @@
+<section class="transaction-list-container">
+  <header class="list-header">
+    <img src="/assets/icons/briefcase.png" alt="" class="header-icon" />
+    <h2>Recent Transactions</h2>
+  </header>
+
+  <div class="controls-row">
+    <div class="search-input-wrapper">
+      <input
+        type="text"
+        placeholder="Search by typing..."
+        (input)="onSearchChange(search.value)"
+        #search
+      />
+      @if (search.value) {
+      <button class="clear-btn" (click)="search.value = ''; onSearchChange('')">×</button>
+      }
+    </div>
+
+    <div class="sort-controls">
+      <span>Sort by</span>
+      <div class="btn-group">
+        <button
+          [class.active]="transactionService.sortBy() === 'date'"
+          (click)="transactionService.toggleSort('date')"
+        >
+          DATE @if (transactionService.sortBy() === 'date') {
+          <span class="arrow" [class.asc]="transactionService.sortDirection() === 'asc'">▾</span>
+          }
+        </button>
+        <button
+          [class.active]="transactionService.sortBy() === 'beneficiary'"
+          (click)="transactionService.toggleSort('beneficiary')"
+        >
+          BENEFICIARY @if (transactionService.sortBy() === 'beneficiary') {
+          <span class="arrow" [class.asc]="transactionService.sortDirection() === 'asc'">▾</span>
+          }
+        </button>
+        <button
+          [class.active]="transactionService.sortBy() === 'amount'"
+          (click)="transactionService.toggleSort('amount')"
+        >
+          AMOUNT @if (transactionService.sortBy() === 'amount') {
+          <span class="arrow" [class.asc]="transactionService.sortDirection() === 'asc'">▾</span>
+          }
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="items-list">
+    @for (item of transactionService.filteredTransactions(); track item.transactionDate) {
+    <app-transaction-item [transaction]="item" />
+    } @empty {
+    <p class="no-results">No transactions found matching your search.</p>
+    }
+  </div>
+</section>
