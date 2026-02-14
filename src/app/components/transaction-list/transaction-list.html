@@ -20,30 +20,17 @@
     <div class="sort-controls">
       <span>Sort by</span>
       <div class="btn-group">
+        @for (option of sortCriterias; track option) {
         <button
-          [class.active]="transactionService.sortBy() === 'date'"
-          (click)="transactionService.toggleSort('date')"
+          [class.active]="transactionService.sortBy() === option"
+          (click)="transactionService.toggleSort(option)"
         >
-          DATE @if (transactionService.sortBy() === 'date') {
+          {{ option | uppercase }}
+          @if (transactionService.sortBy() === option) {
           <span class="arrow" [class.asc]="transactionService.sortDirection() === 'asc'">▾</span>
           }
         </button>
-        <button
-          [class.active]="transactionService.sortBy() === 'beneficiary'"
-          (click)="transactionService.toggleSort('beneficiary')"
-        >
-          BENEFICIARY @if (transactionService.sortBy() === 'beneficiary') {
-          <span class="arrow" [class.asc]="transactionService.sortDirection() === 'asc'">▾</span>
-          }
-        </button>
-        <button
-          [class.active]="transactionService.sortBy() === 'amount'"
-          (click)="transactionService.toggleSort('amount')"
-        >
-          AMOUNT @if (transactionService.sortBy() === 'amount') {
-          <span class="arrow" [class.asc]="transactionService.sortDirection() === 'asc'">▾</span>
-          }
-        </button>
+        }
       </div>
     </div>
   </div>

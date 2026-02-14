@@ -31,11 +31,11 @@
   padding: 0 15px;
   box-sizing: border-box;
 
-  .form {
+  .transaction-form {
     height: fit-content;
   }
 
-  .list {
+  .transactions-history-list {
     max-height: 80vh;
 
     @media (max-width: 1024px) {

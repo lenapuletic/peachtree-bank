@@ -1,10 +1,11 @@
 import { inject, Injectable, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Transaction } from '../models/transaction';
-import { tap } from 'rxjs';
+import { catchError, of, tap } from 'rxjs';
 
-export type SortColumn = 'date' | 'beneficiary' | 'amount';
+export type SortCriteria = 'date' | 'beneficiary' | 'amount';
 export type SortDirection = 'asc' | 'desc';
+const INITIAL_BALANCE = 5824.76;
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +13,10 @@ export type SortDirection = 'asc' | 'desc';
 export class TransactionService {
   private http = inject(HttpClient);
 
-  private balanceState = signal<number>(5824.76);
+  private balanceState = signal<number>(INITIAL_BALANCE);
   private transactionsState = signal<Transaction[]>([]);
   private filterTermState = signal<string>('');
-  private sortByState = signal<SortColumn>('date');
+  private sortByState = signal<SortCriteria>('date');
   private sortDirectionState = signal<SortDirection>('desc');
 
   readonly balance = this.balanceState.asReadonly();
@@ -40,9 +41,13 @@ export class TransactionService {
 
     return list.sort((a, b) => {
       let comparison = 0;
-      if (sortField === 'date') comparison = a.transactionDate - b.transactionDate;
-      if (sortField === 'beneficiary') comparison = a.merchant.localeCompare(b.merchant);
-      if (sortField === 'amount') comparison = parseFloat(a.amount) - parseFloat(b.amount);
+      if (sortField === 'date') {
+        comparison = a.transactionDate - b.transactionDate;
+      } else if (sortField === 'beneficiary') {
+        comparison = a.merchant.localeCompare(b.merchant);
+      } else if (sortField === 'amount') {
+        comparison = parseFloat(a.amount) - parseFloat(b.amount);
+      }
 
       return direction === 'desc' ? -comparison : comparison;
     });
@@ -55,11 +60,17 @@ export class TransactionService {
   private fetchInitialTransactions() {
     this.http
       .get<{ data: Transaction[] }>('/assets/data/transactions.json')
-      .pipe(tap((response) => this.transactionsState.set(response.data)))
+      .pipe(
+        tap((response) => this.transactionsState.set(response.data)),
+        catchError((error) => {
+          console.error('Failed to load transactions:', error);
+          return of({ data: [] });
+        })
+      )
       .subscribe();
   }
 
-  toggleSort(criteria: SortColumn) {
+  toggleSort(criteria: SortCriteria) {
     if (this.sortByState() === criteria) {
       this.sortDirectionState.update((dir) => (dir === 'asc' ? 'desc' : 'asc'));
     } else {

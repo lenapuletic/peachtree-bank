@@ -13,6 +13,14 @@ describe('TransactionItem', () => {
 
     fixture = TestBed.createComponent(TransactionItem);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('transaction', {
+      amount: '100.00',
+      categoryCode: '#1180aa',
+      merchant: 'Test Merchant',
+      merchantLogo: '',
+      transactionDate: Date.now(),
+      transactionType: 'Card Payment',
+    });
     await fixture.whenStable();
   });
 
