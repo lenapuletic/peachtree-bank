@@ -1,6 +1,9 @@
 .transaction-list-container {
   background: #fff;
   padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   .list-header {
     background-color: var(--primary-teal);
@@ -9,6 +12,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
 
     .header-icon {
       height: 20px;
@@ -27,6 +31,7 @@
 }
 
 .controls-row {
+  flex-shrink: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -115,4 +120,16 @@
 
 .items-list {
   padding: 0 20px;
+  height: 500px;
+  overflow-y: auto;
+  padding: 0 20px;
+
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+  }
 }

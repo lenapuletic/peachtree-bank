@@ -37,11 +37,10 @@
 
   .list {
     max-height: 80vh;
-    overflow-y: auto;
-    scrollbar-width: thin;
 
     @media (max-width: 1024px) {
-      max-height: 55vh;
+      max-height: 50vh;
+      margin-bottom: 20px;
     }
   }
 
@@ -51,6 +50,9 @@
     margin: 20px auto;
     width: 100%;
     max-width: 600px;
-    padding: 0 20px;
+  }
+
+  @media (max-width: 344px) {
+    padding: 0 5px;
   }
 }
