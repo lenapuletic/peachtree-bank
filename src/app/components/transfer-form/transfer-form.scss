@@ -1,0 +1,97 @@
+.transfer-card {
+  background: #fff;
+
+  .card-header {
+    background-color: var(--primary-teal);
+    color: white;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .header-icon.rotate {
+      width: 18px;
+      mix-blend-mode: color-burn; // ToDo: rethink a better solution
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 300;
+      margin: 0;
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  .form-body,
+  .preview-body {
+    padding: 25px;
+  }
+
+  .form-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .preview-body {
+    p {
+      margin-bottom: 40px;
+    }
+  }
+  .input-group {
+    margin-bottom: 20px;
+    label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      padding: 8px 0;
+      outline: none;
+      font-family: inherit;
+    }
+    input:disabled {
+      background: transparent;
+      color: #666;
+    }
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 10px;
+  }
+
+  .submit-btn,
+  .transfer-btn,
+  .back-btn {
+    width: 100%;
+    background-color: var(--secondary-orange);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 4px;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .submit-btn {
+    width: 80%;
+    align-self: flex-end;
+  }
+
+  .back-btn {
+    background-color: white;
+    color: var(--secondary-orange);
+    border: 1px solid var(--secondary-orange);
+    padding: 12px;
+  }
+}

@@ -1,0 +1,46 @@
+<section class="transfer-card">
+  <header class="card-header">
+    <img src="/assets/icons/arrows.png" alt="" class="header-icon rotate" />
+    <h2>Make a Transfer</h2>
+  </header>
+
+  @if (!isPreview()) {
+  <form [formGroup]="transferForm" (ngSubmit)="onSubmit()" class="form-body">
+    <div class="input-group">
+      <label>FROM ACCOUNT</label>
+      <input type="text" [value]="fromAccountDisplay" disabled />
+    </div>
+
+    <div class="input-group">
+      <label for="toAccount">TO ACCOUNT</label>
+      <input
+        id="toAccount"
+        type="text"
+        formControlName="toAccount"
+        placeholder="Georgia Power Electric Company"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="amount">AMOUNT</label>
+      <div class="currency-input">
+        <input id="amount" type="number" formControlName="amount" placeholder="$ 0.00" />
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="transferForm.invalid" class="submit-btn">SUBMIT</button>
+  </form>
+  } @else {
+  <div class="preview-body">
+    <p>
+      Confirm transfer of <strong>{{ transferForm.value.amount | currency }}</strong> to
+      <strong>{{ transferForm.value.toAccount }}</strong
+      >?
+    </p>
+    <div class="btn-group">
+      <button (click)="isPreview.set(false)" class="back-btn">BACK</button>
+      <button (click)="onTransfer()" class="transfer-btn">TRANSFER</button>
+    </div>
+  </div>
+  }
+</section>
