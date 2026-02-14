@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TransactionService } from '../../services/transaction.service';
+import { TransactionService } from '../../services/transaction';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({

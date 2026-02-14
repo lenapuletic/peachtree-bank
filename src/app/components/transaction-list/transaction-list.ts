@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { SortCriteria, TransactionService } from '../../services/transaction.service';
+import { SortCriteria, TransactionService } from '../../services/transaction';
 import { TransactionItem } from '../transaction-item/transaction-item';
 import { FormsModule } from '@angular/forms';
-import { UpperCasePipe }  from "@angular/common";
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-transaction-list',
