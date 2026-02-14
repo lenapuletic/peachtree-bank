@@ -1,59 +1,46 @@
-# PeachtreeBank
+# Peachtree Bank - Transfer & Transaction Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
+A modern, responsive banking dashboard built with Angular 21, focusing on high-performance reactivity using Signals and a clean, maintainable architecture.
 
-## Development server
+## 🚀 Key Features
 
-To start a local development server, run:
+* **Real-time Filtering**: Instantly search through transaction history by merchant, type, or amount.
+* **Persistent Sorting**: Sorting direction (Ascending/Descending) is preserved globally when switching between Date, Beneficiary, and Amount columns.
+* **Secure Transfer Flow**: Reactive form with strict validation ($0.01 – $500.00 limit) and a two-step confirmation preview.
+* **Fine-Grained Reactivity**: Leverages **Angular Signals** for state management, ensuring the UI only re-renders exactly what changed.
 
-```bash
-ng serve
-```
+## 🛠 Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* **Framework**: Angular 21 (Standalone Components, Signals API, Modern Control Flow).
+* **State Management**: Signal-based `TransactionService` providing a unidirectional data flow.
+* **Forms**: Reactive Forms with custom validation and error handling.
+* **Styling**: SCSS with CSS Variables.
+* **Testing**: Vitest, with specific fixes for Signal Inputs and structural routing tests.
 
-## Code scaffolding
+## 📂 Architecture
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+* **`TransactionService`**: The source of truth for balance and transaction data.
+* **`Dashboard`**: The primary page component managing the responsive shell.
+* **`TransactionList`**: Smart component managing filtering and sorting interactions.
+* **`TransactionItem`**: Presentational component using Signal Inputs.
+* **`TransferForm`**: Functional core utilizing Reactive Forms and a confirmation preview state.
+  
+* ## 📱 Responsiveness Approach
 
-```bash
-ng generate component component-name
-```
+For this project, I implemented a **Desktop-First** approach using SCSS media queries.
+While Desktop-First was used here to match the provided design, I recognize that **Mobile-First** is the industry standard for banking applications, as they are predominantly accessed via mobile devices. Given a mobile-specific design, I would have go for a Mobile-First architecture.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🧪 Getting Started
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+2.  **Run the application**:
+    ```bash
+    ng serve
+    ```
+3.  **Run unit tests**:
+    ```bash
+    ng test
+    ```
