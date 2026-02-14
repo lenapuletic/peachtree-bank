@@ -8,7 +8,7 @@
   <form [formGroup]="transferForm" (ngSubmit)="onSubmit()" class="form-body">
     <div class="input-group">
       <label>FROM ACCOUNT</label>
-      <input type="text" [value]="fromAccountDisplay" disabled />
+      <input type="text" [value]="fromAccountDisplay()" disabled />
     </div>
 
     <div class="input-group">

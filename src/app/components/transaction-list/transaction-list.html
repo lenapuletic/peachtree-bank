@@ -50,7 +50,7 @@
 
   <div class="items-list">
     @for (item of transactionService.filteredTransactions(); track item.transactionDate) {
-    <app-transaction-item [transaction]="item" />
+    <app-transaction-item [transaction]="item" [style.--category-color]="item.categoryCode" />
     } @empty {
     <p class="no-results">No transactions found matching your search.</p>
     }

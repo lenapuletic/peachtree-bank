@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TransactionService } from '../../services/transaction.service';
 import { CurrencyPipe } from '@angular/common';
@@ -14,7 +14,9 @@ export class TransferForm {
   private fb = inject(FormBuilder);
   private transactionService = inject(TransactionService);
 
-  readonly fromAccountDisplay = `Free Checking(4692) - $${this.transactionService.balance()}`;
+  readonly fromAccountDisplay = computed(
+    () => `Free Checking(4692) - $${this.transactionService.balance().toFixed(2)}`
+  );
 
   isPreview = signal(false);
 
