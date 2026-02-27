@@ -20,6 +20,8 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "baseHref": "/peachtree-bank/", 
+            "outputPath": "dist/peachtree-bank",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
