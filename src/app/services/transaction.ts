@@ -59,7 +59,7 @@ export class TransactionService {
 
   private fetchInitialTransactions() {
     this.http
-      .get<{ data: Transaction[] }>('/assets/data/transactions.json')
+      .get<{ data: Transaction[] }>('assets/data/transactions.json')
       .pipe(
         tap((response) => this.transactionsState.set(response.data)),
         catchError((error) => {
