@@ -14,9 +14,7 @@ export class TransferForm {
   private fb = inject(FormBuilder);
   private transactionService = inject(TransactionService);
 
-  readonly fromAccountDisplay = computed(
-    () => `Free Checking(4692) - $${this.transactionService.balance().toFixed(2)}`
-  );
+  readonly fromAccountDisplay = computed(() => `$${this.transactionService.balance().toFixed(2)}`);
 
   isPreview = signal(false);
 
@@ -24,7 +22,11 @@ export class TransferForm {
     toAccount: ['', Validators.required],
     amount: [
       null as number | null,
-      [Validators.required, Validators.min(0.01), Validators.max(500)],
+      [
+        Validators.required,
+        Validators.min(0.01),
+        Validators.max(this.transactionService.balance()),
+      ],
     ],
   });
 

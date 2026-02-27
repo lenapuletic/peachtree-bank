@@ -4,6 +4,9 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  border: 2px solid var(--primary-teal);
+  border-radius: 12px;
+  overflow: hidden;
 
   .list-header {
     background-color: var(--primary-teal);

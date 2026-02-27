@@ -7,18 +7,13 @@
   @if (!isPreview()) {
   <form [formGroup]="transferForm" (ngSubmit)="onSubmit()" class="form-body">
     <div class="input-group">
-      <label>FROM ACCOUNT</label>
+      <label>CURRENT BALANCE</label>
       <input type="text" [value]="fromAccountDisplay()" disabled />
     </div>
 
     <div class="input-group">
       <label for="toAccount">TO ACCOUNT</label>
-      <input
-        id="toAccount"
-        type="text"
-        formControlName="toAccount"
-        placeholder="Georgia Power Electric Company"
-      />
+      <input id="toAccount" type="text" formControlName="toAccount" placeholder="To Account" />
     </div>
 
     <div class="input-group">
